@@ -1,0 +1,28 @@
+{
+  "name": "clawhunt-1807-candidate-h5",
+  "version": "1.0.0",
+  "private": true,
+  "description": "骑手招聘 Agent 化信息收集平台 · 任务 2/5：求职者端 H5（#1807）",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "mock": "python -m uvicorn mock.app:app --host 127.0.0.1 --port 8001",
+    "build": "vite build",
+    "preview": "node scripts/dev.mjs --preview",
+    "test:e2e": "playwright test",
+    "test:e2e:report": "playwright test --reporter=list",
+    "verify": "node scripts/dev.mjs --help"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "@vitejs/plugin-react": "4.3.4",
+    "vite": "5.4.21"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,25 @@
+# Node
+node_modules/
+dist/
+.vite/
+playwright-report/
+test-results/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.fresh/
+
+# 运行产物（verify 可再生成）
+receipt/logs/
+receipt/*.xml
+evidence/perf.json
+evidence/playwright.json
+
+# 本机临时
+*.log
+*.bak
+*.tmp
+.DS_Store

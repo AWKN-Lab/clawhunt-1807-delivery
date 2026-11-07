@@ -1,0 +1,78 @@
+{
+  "project": "clawhunt-1807/candidate-h5",
+  "generated_at": "2026-11-07T03:41:35.972499Z",
+  "conclusion": "PASS",
+  "exit_code": 0,
+  "git_commit": "4de2c36",
+  "platform": {
+    "os": "Windows",
+    "python": "3.12.13",
+    "node": "C:\\Program Files\\nodejs\\node.EXE"
+  },
+  "steps": [
+    {
+      "name": "pytest",
+      "command": "D:\\AWKN-Lab\\clawhunt\\work\\1807\\repo\\.venv\\Scripts\\python.exe -m pytest -q --junitxml=receipt/pytest.xml tests",
+      "exit_code": 0,
+      "duration_ms": 1294,
+      "status": "PASS",
+      "log": "receipt\\logs\\pytest.log",
+      "summary": "41 passed / 41 total (failures=0, errors=0, skipped=0)"
+    },
+    {
+      "name": "build",
+      "command": "npm run build",
+      "exit_code": 0,
+      "duration_ms": 1409,
+      "status": "PASS",
+      "log": "receipt\\logs\\build.log"
+    },
+    {
+      "name": "playwright",
+      "command": "npx playwright test",
+      "exit_code": 0,
+      "duration_ms": 27119,
+      "status": "PASS",
+      "log": "receipt\\logs\\playwright.log",
+      "summary": "8 passed / 8 total (unexpected=0, flaky=0, skipped=0)"
+    },
+    {
+      "name": "evidence-artifacts",
+      "command": "检查 evidence/screenshots/*.png（>=3）与 evidence/perf.json",
+      "exit_code": 0,
+      "duration_ms": 0,
+      "status": "PASS",
+      "summary": "screenshots=4, perf=yes"
+    }
+  ],
+  "dist": {
+    "files": 3,
+    "bytes": 178965
+  },
+  "screenshots": [
+    {
+      "file": "evidence\\screenshots\\375x667-chat.png",
+      "width": 375,
+      "height": 809,
+      "bytes": 37526
+    },
+    {
+      "file": "evidence\\screenshots\\375x667-font150.png",
+      "width": 375,
+      "height": 1406,
+      "bytes": 76701
+    },
+    {
+      "file": "evidence\\screenshots\\390x844-chat.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 40389
+    },
+    {
+      "file": "evidence\\screenshots\\414x896-chat.png",
+      "width": 414,
+      "height": 896,
+      "bytes": 40880
+    }
+  ]
+}
