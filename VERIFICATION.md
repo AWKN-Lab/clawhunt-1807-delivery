@@ -105,7 +105,7 @@ EXIT=0
 
 | 项 | 状态 | 原因 |
 | --- | --- | --- |
-| Docker 容器本机实跑 | **未实跑** | 本机 Docker daemon 不可用（`docker info` exit 1，npipe 不存在）；仅 `docker compose config --quiet` 静态通过 |
+| Docker 容器本机实跑 | **已实跑 PASS** | 2026-11-07 在 WSL2 Ubuntu 26.04 + Docker Engine 29.1.3 + Compose v2.40.3 上执行；`UP_EXIT=0`，mock/web 退出码 0/0，健康与 `/api` 反代均 200 |
 | GitHub Actions 实际运行 | **未运行** | 仓库未推送、不建远程；`ci.yml` / `container.yml` 仅静态存在 |
 | 4G 首屏 ≤2s | **未验证** | `evidence/perf.json` 是本地 Vite dev 的 87 ms，不代表 4G 现场 |
 | iOS/Android 真机 | **未验证** | 仅 Playwright Chromium 三视口 + 150% 字体模拟 |

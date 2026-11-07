@@ -116,12 +116,17 @@ dist 合计：3 files / 178,965 bytes
 ## 5. 容器与 CI
 
 ```text
-docker compose config --quiet → exit 0（compose 文件静态校验通过）
-docker info --format "{{.ServerVersion}}" → exit 1
-failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine
+docker compose config                                   → exit 0
+docker compose up --build --abort-on-container-exit     → UP_EXIT=0
+GET http://127.0.0.1:8001/api/v1/health                  → 200（mock）
+GET http://127.0.0.1:8080/                              → 200，含 <div id="root">
+GET http://127.0.0.1:8080/api/v1/health                 → 200（nginx /api 反代）
+docker compose stop 后退出码                             → mock=0 / web=0
 ```
 
-因此：**容器未在本机实跑**。`docker-compose.yml`（mock:8001 + web:8080→80）、`Dockerfile`（python:3.12-slim + healthcheck）、`Dockerfile.web`（node:20-alpine 构建 + nginx:1.27-alpine）与 `.github/workflows/container.yml` 已就绪，待 CI/有 daemon 的环境执行。`.github/workflows/ci.yml` 同样只是静态文件，未推送、未在 GitHub 实际运行。
+环境：WSL2 Ubuntu 26.04 + Docker Engine 29.1.3 + Compose v2.40.3（宿主 Docker Desktop 4.98.0 daemon 在非交互会话中无法驻留，故改用 WSL 内 Engine；镜像加速与 `UP_EXIT` 判定见 `DELIVERY-NOTES.md` 第 8 节）。
+
+`docker-compose.yml`（mock:8001 + web:8080→80）、`Dockerfile`（python:3.12-slim + healthcheck）、`Dockerfile.web`（node:20-alpine 构建 + nginx:1.27-alpine）均已按上表实跑。`.github/workflows/container.yml`、`ci.yml` 仍是未推送的静态文件，未在 GitHub 实际运行。
 
 ## 6. 复跑入口
 

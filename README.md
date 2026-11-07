@@ -116,7 +116,7 @@ repo/
 ## 已知限制
 
 - 微信小程序打包未包含（加分项，非必需）。
-- 本机 Docker daemon 不可用，容器未在本机实跑；`docker-compose.yml` / Dockerfile 仅做静态校验，容器流程由 CI（`.github/workflows/container.yml`）执行。
+- 容器已在 WSL2 Docker Engine 29.1.3 + Compose v2.40.3 上实跑（UP_EXIT=0，mock/web 退出码 0/0）；GitHub Actions 未推送、未实际运行，无 CI run 号。
 - 首屏耗时是本地 Vite dev 环境测量（见 `evidence/perf.json`），不代表 4G 现场。
 - mock 使用进程内内存，重启即清空；生产需替换为 PostgreSQL + 真实 Agent/保险箱服务。
 - CI workflow 已编写，但尚未推送到远程，未在 GitHub 上实际运行。

@@ -95,6 +95,22 @@ python -m venv .venv; .venv\Scripts\python -m pip install -r requirements.txt
 
 **PASS**。
 
+## 补充闸（项目标准口径）｜容器一键起
+
+**实测命令**（2026-11-07，WSL2 Ubuntu 26.04 + Docker Engine 29.1.3 + Compose v2.40.3）：
+
+```text
+cd /mnt/d/AWKN-Lab/clawhunt/work/1807/repo
+docker compose config                                 → exit 0
+docker compose up --build --abort-on-container-exit   → UP_EXIT=0
+GET http://127.0.0.1:8001/api/v1/health                → 200 {"status":"ok","service":"clawhunt-1807-mock",...}
+GET http://127.0.0.1:8080/                            → 200，含 <div id="root">
+GET http://127.0.0.1:8080/api/v1/health               → 200（nginx 反代到 mock）
+docker compose stop 后退出码                           → mock=0 / web=0
+```
+
+**PASS**。项目标准口径（含容器闸）由此前 4/5 更新为 **5/5**；仓库内五闸仍为 5/5。
+
 ## 汇总
 
 | 闸 | 结论 |
@@ -104,3 +120,4 @@ python -m venv .venv; .venv\Scripts\python -m pip install -r requirements.txt
 | 3 示例产出可核 | PASS |
 | 4 README 三步可照抄 | PASS（Windows）；Linux/macOS 未实跑 |
 | 5 无隐藏前置 | PASS |
+| 容器一键起（项目标准口径） | PASS（2026-11-07 实测） |
