@@ -145,7 +145,7 @@ curl -fsS -o /dev/null -w '%{http_code}' http://127.0.0.1:8080/
 docker compose stop
 grep UP_EXIT /tmp/up.log
 # 4) 每个容器的退出码（必须在 down 之前取）
-docker compose ps -aq | xargs -r docker inspect --format 'name={{.Name}} exit={{.State.ExitCode}} status={{.State.Status}}'
+docker compose ps -a --format json
 # 5) 清理
 docker compose down -v
 ```
